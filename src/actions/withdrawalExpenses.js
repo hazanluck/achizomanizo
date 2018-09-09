@@ -7,8 +7,9 @@ export const addWithdrawalExpense = (withdrawalExpense) => ({
   withdrawalExpense
 });
 
-export const startAddWithdrawalExpense = (expenseData = {}) => {
-  return (dispatch) => {
+export const startAddWithdrawalExpense = (withdrawalExpenseData = {}) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
     const {
       withdrawalName = '',  
       description = '',
@@ -17,10 +18,11 @@ export const startAddWithdrawalExpense = (expenseData = {}) => {
       note = '',
       amount = 0,
       createdAt = 0
-    } = expenseData;
+    } = withdrawalExpenseData;
     const withdrawalExpense = {withdrawalName , description, withdrawalItem, withdrawalPhone , note , amount, createdAt };
 
-    return database.ref('withdrawalExpenses').push(withdrawalExpense).then((ref) => {
+
+    return database.ref(`users/${uid}/withdrawalExpenses`).push(withdrawalExpense).then((ref) => {
       dispatch(addWithdrawalExpense({
         id: ref.key,
         ...withdrawalExpense
@@ -36,8 +38,9 @@ export const removeWithdrawalExpense = ({ id } = {}) => ({
 });
 
 export const startRemoveWithdrawalExpense = ({ id } = {}) => {
-  return (dispatch) => {
-    return database.ref(`withdrawalExpenses/${id}`).remove().then(() => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    return database.ref(`users/${uid}/withdrawalExpenses/${id}`).remove().then(() => {
       dispatch(removeWithdrawalExpense({ id }));
     });
   };
@@ -51,8 +54,9 @@ export const editWithdrawalExpense = (id, updates) => ({
 });
 
 export const startEditWithdrawalExpense = (id, updates) => {
-  return (dispatch) => {
-    return database.ref(`withdrawalExpenses/${id}`).update(updates).then(() => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    return database.ref(`users/${uid}/withdrawalExpenses/${id}`).update(updates).then(() => {
       dispatch(editWithdrawalExpense(id, updates));
     });
   };
@@ -65,8 +69,9 @@ export const setWithdrawalExpenses = (withdrawalExpenses) => ({
 });
 
 export const startSetWithdrawalExpenses = () => {
-  return (dispatch) => {
-    return database.ref('withdrawalExpenses').once('value').then((snapshot) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    return database.ref(`users/${uid}/withdrawalExpenses`).once('value').then((snapshot) => {
       const withdrawalExpenses = [];
 
       snapshot.forEach((childSnapshot) => {

@@ -8,13 +8,19 @@ export const Header = ({ startLogout }) => (
     <div className="content-container">
       <div className="header__content">
         <Link className="header__title" to="/dashboard">
-          <h1>Seller</h1>
+          <p>Sellers</p>
         </Link>
         <Link className="header__title" to="/rentDashboard">
           <p>Renters</p>
         </Link>
         <Link className="header__title" to="/investorDashboard">
           <p>Investors </p>
+        </Link>
+        <Link className="header__title" to="/payableDashboard">
+          <p> Payables </p>
+        </Link>
+        <Link className="header__title" to="/withdrawalDashboard">
+          <p> withdrawals </p>
         </Link>
         <button className="button button--link" onClick={startLogout}>Logout</button>
       </div>

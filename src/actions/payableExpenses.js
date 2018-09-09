@@ -8,7 +8,8 @@ export const addPayableExpense = (payableExpense) => ({
 });
 
 export const startAddPayableExpense = (payableExpenseData = {}) => {
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
     const {
       payableName = '',  
       description = '',
@@ -18,10 +19,10 @@ export const startAddPayableExpense = (payableExpenseData = {}) => {
       amount = 0,
       createdAt = 0
     } = payableExpenseData;
-
     const payableExpense = {payableName , description, payableItem, payablePhone , note , amount, createdAt };
 
-    return database.ref('payableExpenses').push(payableExpense).then((ref) => {
+
+    return database.ref(`users/${uid}/payableExpenses`).push(payableExpense).then((ref) => {
       dispatch(addPayableExpense({
         id: ref.key,
         ...payableExpense
@@ -37,8 +38,9 @@ export const removePayableExpense = ({ id } = {}) => ({
 });
 
 export const startRemovePayableExpense = ({ id } = {}) => {
-  return (dispatch) => {
-    return database.ref(`payableExpenses/${id}`).remove().then(() => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    return database.ref(`users/${uid}/payableExpenses/${id}`).remove().then(() => {
       dispatch(removePayableExpense({ id }));
     });
   };
@@ -52,8 +54,9 @@ export const editPayableExpense = (id, updates) => ({
 });
 
 export const startEditPayableExpense = (id, updates) => {
-  return (dispatch) => {
-    return database.ref(`payableExpenses/${id}`).update(updates).then(() => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    return database.ref(`users/${uid}/payableExpenses/${id}`).update(updates).then(() => {
       dispatch(editPayableExpense(id, updates));
     });
   };
@@ -66,8 +69,9 @@ export const setPayableExpenses = (payableExpenses) => ({
 });
 
 export const startSetPayableExpenses = () => {
-  return (dispatch) => {
-    return database.ref('payableExpenses').once('value').then((snapshot) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    return database.ref(`users/${uid}/payableExpenses`).once('value').then((snapshot) => {
       const payableExpenses = [];
 
       snapshot.forEach((childSnapshot) => {
