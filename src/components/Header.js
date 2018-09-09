@@ -13,14 +13,14 @@ export const Header = ({ startLogout }) => (
         <Link className="header__title" to="/rentDashboard">
           <p>Renters</p>
         </Link>
-        <Link className="header__title" to="/investorDashboard">
-          <p>Investors </p>
+        <Link className="header__title" to="/withdrawalDashboard">
+          <p> withdrawals </p>
         </Link>
         <Link className="header__title" to="/payableDashboard">
           <p> Payables </p>
         </Link>
-        <Link className="header__title" to="/withdrawalDashboard">
-          <p> withdrawals </p>
+        <Link className="header__title" to="/investorDashboard">
+          <p>Investors </p>
         </Link>
         <button className="button button--link" onClick={startLogout}>Logout</button>
       </div>
