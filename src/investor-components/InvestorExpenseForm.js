@@ -70,7 +70,7 @@ export default class InvestorExpenseForm extends React.Component {
         description: this.state.description,
         investorItem : parseInt(this.state.investorItem, 10),
         investorPhone : parseInt(this.state.investorPhone),
-        amount: parseFloat(this.state.amount, 10) * 100,
+        amount: parseFloat(this.state.amount, 10),
         createdAt: this.state.createdAt.valueOf(),
         note: this.state.note
       });
@@ -97,7 +97,7 @@ export default class InvestorExpenseForm extends React.Component {
           />
           <input
             type="text"
-            placeholder="Phonenumber (optional)"
+            placeholder="Phonenumber"
             className="text-input"
             value={this.state.investorPhone}
             onChange={this.onInvestorPhoneChange}

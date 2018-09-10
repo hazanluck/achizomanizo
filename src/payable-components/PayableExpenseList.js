@@ -6,12 +6,9 @@ import selectPayableExpenses from '../selectors/payableExpenses';
 export const PayableExpenseList = (props) => (
   <div className="content-container">
   <div className="list-header">
-    <div className="show-for-mobile">Payable Expense</div>
     <div className="show-for-desktop">List of Payables</div>
     <div className="show-for-desktop">Payable User</div>
-    <div className="show-for-desktop">Phone Number</div>
     <div className="show-for-desktop">Amount</div>
-    <div className="show-for-desktop">Payable Item</div>
   </div>
   <div className="list-body">
   {

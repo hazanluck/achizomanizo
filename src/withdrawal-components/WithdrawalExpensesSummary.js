@@ -2,12 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import numeral from 'numeral';
+import currencyFormatter from 'currency-formatter';
 import selectWithdrawalExpenses from '../selectors/withdrawalExpenses';
 import selectWithdrawalExpensesTotal from '../selectors/withdrawalExpenses-total';
 
 export const WithdrawalExpensesSummary = ({ withdrawalExpenseCount, withdrawalExpensesTotal }) => {
   const withdrawalExpenseWord = withdrawalExpenseCount === 1 ? 'withdrawalExpense' : 'withdrawalExpenses' ;
-  const formattedwithdrawalExpensesTotal = numeral(withdrawalExpensesTotal / 100).format('$0,0.00');
+  const formattedwithdrawalExpensesTotal = currencyFormatter.format((withdrawalExpensesTotal), { locale: 'sw-TZ' });
   
   return (
     <div className="page-header">

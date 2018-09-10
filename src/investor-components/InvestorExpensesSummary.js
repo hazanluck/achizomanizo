@@ -2,12 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import numeral from 'numeral';
+import currencyFormatter from 'currency-formatter';
 import selectInvestorExpenses from '../selectors/investorExpenses';
 import selectInvestorExpensesTotal from '../selectors/investorExpenses-total';
 
 export const InvestorExpensesSummary = ({ investorExpenseCount, investorExpensesTotal }) => {
   const investorExpenseWord = investorExpenseCount === 1 ? 'investorExpense' : 'investorExpenses' ;
-  const formattedinvestorExpensesTotal = numeral(investorExpensesTotal / 100).format('$0,0.00');
+  const formattedinvestorExpensesTotal = currencyFormatter.format((investorExpensesTotal), { locale: 'sw-TZ' });
   
   return (
     <div className="page-header">

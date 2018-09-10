@@ -6,12 +6,9 @@ import selectWithdrawalExpenses from '../selectors/withdrawalExpenses';
 export const WithdrawalExpenseList = (props) => (
   <div className="content-container">
   <div className="list-header">
-    <div className="show-for-mobile">Withdrawal Expense</div>
     <div className="show-for-desktop">List of Withdrawal</div>
     <div className="show-for-desktop">Withdrawal User</div>
-    <div className="show-for-desktop">Phone Number</div>
     <div className="show-for-desktop">Amount</div>
-    <div className="show-for-desktop">Item Withdrawal</div>
   </div>
   <div className="list-body">
   {

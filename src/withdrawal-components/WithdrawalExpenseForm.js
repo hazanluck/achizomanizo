@@ -70,7 +70,7 @@ export default class WithdrawalExpenseForm extends React.Component {
         description: this.state.description,
         withdrawalItem : parseInt(this.state.withdrawalItem, 10),
         withdrawalPhone : parseInt(this.state.withdrawalPhone),
-        amount: parseFloat(this.state.amount, 10) * 100,
+        amount: parseFloat(this.state.amount, 10) ,
         createdAt: this.state.createdAt.valueOf(),
         note: this.state.note
       });
@@ -97,7 +97,7 @@ export default class WithdrawalExpenseForm extends React.Component {
           />
           <input
             type="text"
-            placeholder="PhoneNumber (optional)"
+            placeholder="Phonenumber "
             className="text-input"
             value={this.state.withdrawalPhone}
             onChange={this.onWithdrawalPhoneChange}
@@ -111,7 +111,7 @@ export default class WithdrawalExpenseForm extends React.Component {
           />
           <input
             type="text"
-            placeholder="withdrawalItem (optional)"
+            placeholder="how many did you withdraw? "
             className="text-input"
             value={this.state.withdrawalItem}
             onChange={this.onWithdrawalItemChange}

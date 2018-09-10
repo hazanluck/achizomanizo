@@ -2,12 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import numeral from 'numeral';
+import currencyFormatter from 'currency-formatter';
 import selectPayableExpenses from '../selectors/payableExpenses';
 import selectPayableExpensesTotal from '../selectors/payableExpenses-total';
 
 export const PayableExpensesSummary = ({ payableExpenseCount, payableExpensesTotal }) => {
   const payableExpenseWord = payableExpenseCount === 1 ? 'payableExpense' : 'payableExpenses' ;
-  const formattedpayableExpensesTotal = numeral(payableExpensesTotal / 100).format('$0,0.00');
+  const formattedpayableExpensesTotal = currencyFormatter.format((payableExpensesTotal), { locale: 'sw-TZ' });
   
   return (
     <div className="page-header">

@@ -5,20 +5,17 @@
 .header__content {
   align-items: center;
   display: flex;
-  justify-content: space-between;
-  padding: $s-size 0;
+  flex: $m-size;
+  padding: $s-size $m-size;
 }
 
 .header__title {
   color: white;
   text-decoration: none;
+  
   p {
+    //letter-spacing: 1px;
+    font-family: Helvetica;
     margin: 0;
-    
   }
-  p:hover { 
-    color: yellow;
-    cursor:pointer;
-    }
-    
 }

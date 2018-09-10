@@ -6,7 +6,6 @@ import selectRentExpenses from '../selectors/rentExpenses';
 export const RentExpenseList = (props) => (
   <div className="content-container">
   <div className="list-header">
-    <div className="show-for-mobile">Rent Expense</div>
     <div className="show-for-desktop">List of Rents</div>
     <div className="show-for-desktop">Rent User</div>
     <div className="show-for-desktop">Phone Number</div>

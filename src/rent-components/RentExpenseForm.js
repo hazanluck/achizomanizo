@@ -70,7 +70,7 @@ export default class RentExpenseForm extends React.Component {
         description: this.state.description,
         rentItem : parseInt(this.state.rentItem, 10),
         rentPhone : parseInt(this.state.rentPhone),
-        amount: parseFloat(this.state.amount, 10) * 100,
+        amount: parseFloat(this.state.amount, 10) ,
         createdAt: this.state.createdAt.valueOf(),
         note: this.state.note
       });
@@ -82,7 +82,7 @@ export default class RentExpenseForm extends React.Component {
         {this.state.error && <p className="form__error">{this.state.error}</p>}
           <input
             type="text"
-            placeholder="Rent UserName"
+            placeholder="Rent Username"
             className="text-input"
             autoFocus
             value={this.state.rentName}
@@ -97,7 +97,7 @@ export default class RentExpenseForm extends React.Component {
           />
           <input
             type="text"
-            placeholder="PhoneNumber (optional)"
+            placeholder="Phonenumber"
             className="text-input"
             value={this.state.rentPhone}
             onChange={this.onrentPhoneChange}

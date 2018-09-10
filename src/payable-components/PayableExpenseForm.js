@@ -70,7 +70,7 @@ export default class PayableExpenseForm extends React.Component {
         description: this.state.description,
         payableItem : parseInt(this.state.payableItem, 10),
         payablePhone : parseInt(this.state.payablePhone),
-        amount: parseFloat(this.state.amount, 10) * 100,
+        amount: parseFloat(this.state.amount, 10) ,
         createdAt: this.state.createdAt.valueOf(),
         note: this.state.note
       });
@@ -97,7 +97,7 @@ export default class PayableExpenseForm extends React.Component {
           />
           <input
             type="text"
-            placeholder="Phonenumber (optional)"
+            placeholder="Phonenumber"
             className="text-input"
             value={this.state.payablePhone}
             onChange={this.onPayablePhoneChange}
@@ -111,7 +111,7 @@ export default class PayableExpenseForm extends React.Component {
           />
           <input
             type="text"
-            placeholder="How many have you been paid?"
+            placeholder="How many have time you been paid?"
             className="text-input"
             value={this.state.payableItem}
             onChange={this.onPayableItemChange}

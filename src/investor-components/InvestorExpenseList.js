@@ -6,12 +6,9 @@ import selectInvestorExpenses from '../selectors/investorExpenses';
 export const InvestorExpenseList = (props) => (
   <div className="content-container">
   <div className="list-header">
-    <div className="show-for-mobile">Investor Expense</div>
     <div className="show-for-desktop">List of Investors</div>
     <div className="show-for-desktop">Investor User</div>
-    <div className="show-for-desktop">Phone Number</div>
     <div className="show-for-desktop">Amount</div>
-    <div className="show-for-desktop">Investor Item</div>
   </div>
   <div className="list-body">
   {
